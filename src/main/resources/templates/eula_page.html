@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="root :: headElement"></head>
+
+<body>
+
+<div style="color:#ffffff; background-color: #000000">
+    <div class="container">
+        <div th:insert="components/EULA :: eula"></div>
+    </div>
+
+    <div th:insert="components/footer :: footer" style="color:#ffffff; background-color: #0f0f26;" ></div>
+</div>
+
+</body>
+
+</html>

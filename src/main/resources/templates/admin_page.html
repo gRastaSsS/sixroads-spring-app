@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="root :: headElement"></head>
+
+<body>
+
+<div class="container">
+    <h2>Files</h2>
+
+    <form th:action="@{/admin/files}" th:method="post" enctype="multipart/form-data">
+        <input type="file" name="file" th:value="${file}">
+
+        <select id="os" name="os" th:value="${os}">
+            <option
+                    th:each="os : ${T(com.fluffytiger.earlygamewebapp.model.OS).values()}"
+                    th:value="${os}"
+                    th:text="${os}">
+            </option>
+        </select>
+        <label for="version">Version</label>
+        <input id="version" type="text" name="version" th:value="${version}">
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <br>
+
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th>Version</th>
+                <th>Size</th>
+                <th>Os</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="file : ${files}">
+                <td th:text="${file.getVersion()}"></td>
+                <td th:text="${file.readableSize()}"></td>
+                <td th:text="${file.getOsName()}"></td>
+
+                <td>
+                    <form th:action="@{'/admin/files/{id}' (id=${file.getId()})}" th:method="delete">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Users</h2>
+
+    <form th:action="@{/admin/users}" th:method="post" th:object="${data}">
+        <input type="text" placeholder="username" th:field="*{username}">
+        <input type="text" placeholder="password" th:field="*{password}">
+        <input type="text" placeholder="roles" th:field="*{roles}">
+        <button type="submit">Create</button>
+    </form>
+
+    <br>
+
+    <table class="table table-hover table-sm">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Roles</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.getRoles()}"></td>
+
+            <td>
+                <form th:action="@{'/admin/users/{id}' (id=${user.getId()})}" th:method="delete">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>

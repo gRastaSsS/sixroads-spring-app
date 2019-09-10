@@ -1,0 +1,59 @@
+main {
+    min-height: calc(100vh - 300px);
+}
+
+.features-list {
+    list-style-type: square;
+}
+
+.downloads {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.downloads li {
+    text-align: center;
+    padding: 0 40px;
+}
+
+.downloads i {
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    color: #ffffff;
+    margin: 5px auto;
+}
+.downloads a {
+    text-decoration: none;
+    display: block;
+}
+
+.downloads a span {
+    color:white;
+    font-size:16px;
+    padding-top: 5px;
+    display:block;
+}
+
+.downloads a:hover i {
+    color: gold;
+}
+
+.download-button {
+    background-color: #16164e;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: #212169;
+    color: gold;
+}
+
+html {
+    width: 100vw;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+}
