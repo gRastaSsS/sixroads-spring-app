@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface JarMetaRepository extends CrudRepository<JarMeta, Long> {
     Iterable<JarMeta> findAllByVersion(String version);
 
-    @Query(value = "SELECT version FROM jars WHERE version = (SELECT MAX(version) FROM jars) GROUP BY version", nativeQuery = true)
+    @Query(value = "SELECT MAX(version) FROM jars", nativeQuery = true)
     Optional<String> findLatestVersion();
 }
